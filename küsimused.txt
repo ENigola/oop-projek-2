@@ -1,0 +1,33 @@
+Teema;Geograafia
+Küsimus;Mis on Portugali pealinn?;Lissabon;Sarajevo;Sofia
+Küsimus;Mis on Taani pealinn?;Kopenhaagen;Paris;Oslo
+Küsimus;Mis riigi pealinn on Brüssel?;Belgia;Bulgaaria;Taani
+Küsimus;Mis riigis asub linn Hamburg?;Saksamaal;Prantsusmaal;Austrias
+Küsimus;Mis riigi pealinn on Ankara?;Türgi;Türkmenistan;Gruusia
+Küsimus;Mis mägi on maailma kõrgeim?;Mount Everest;Munamägi;Mount Blanc
+Küsimus;Milline on maailma pikim jõgi?;Amazonas;Niilus;Jangtse
+Küsimus;Milline nendest riikidest ei asu Aafrikas?;Boliivia;Botswana;Burkina Faso
+Küsimus;Milline nendest riikidest ei asu Aasias?;Honduras;Birma;Nepal
+Küsimus;Milline nendest riikidest ei ole Hiina naaber?;Tai;Kasahstan;Laos
+Teema;Ajalugu
+Küsimus;Mis aastal taasiseseisvus Eesti?;1991;1918;1989
+Küsimus;Mis aastal avastas Christoph Kolumbus Ameerika?;1492;1564;1452
+Küsimus;Kes oli taasiseseisvunud Eesti esimene president?;Lennart Meri;Konstantin Päts;Arnold Rüütel
+Küsimus;Mis aastal algas Teine maailmasõda?;1939;1914;1945
+Küsimus;Kes oli Winston Churchill?;Suurbritannia peaminister;Suurbritannia kuningas;Pranstusamm peaminister
+Küsimus;Mis riigis sündis Adolf Hitler?;Austria;Saksamaa;Ungari
+Küsimus;Mis aastal mõrvati John F. Kennedy?;1963;1973;1968
+Küsimus;Mitmes USA president oli George Washington?;1.;3.;4.
+Küsimsu;Mis aastatel toimus Põhjasõda?;1700-1721;1850-1852;1610-1680
+Küsimus;Mis aastal toimus Veerbuarirevolutsioon?;1917;1920;1913
+Teema;Sport
+Küsimus;Kes on Eesti aasta meessportlane 2016?;Rasmus Mägi;Ksenija Balta;Ott Kiivikas
+Küsimus;Mis ala sportlane on Tõnu Endrekson?;Sõudmine;Suusatamine;Jooksmine
+Küsimus;Kelle käes on meeste 100m sprindi rekord?;Usain Bolt;Asafa Powell;Justin Gatlin
+Küsimus;Mis ala sportlane on Rein Taaramäe?;Jalgrattasport;Suusatamine;Sõudmine
+Küsimus;Mis on meeste kaugushüppe maailmarekord?;8,95 m;7,80 m; 8,42 m
+Küsimus;Mitu olümpiamängude medalit on Gerd Kanteril?;2;3;1
+Küsimus;Mitu olümpiamängude kulda on Michael Phelpsil?;23;12;19
+Küsimsu;Mis aastal tuli Erki Nool olümpiavõitjaks?;2000;2004;1996
+Küsimus;Mis on meeste kõrgushüppe maailmarekord?;2,45 m;2,22 m;2,58 m
+Küsimus;Mitu korda on Andrus Veerpalu tulnud maailmameistriks?;2;4;1
