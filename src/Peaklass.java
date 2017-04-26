@@ -47,7 +47,7 @@ public class Peaklass extends Application {
 				}
 				else {
 					Küsimus k = new Küsimus(osad[1], new String[] {osad[2], osad[3], osad[4]});
-					teemad.get(teemad.size() - 1).lisaKüsimus(k);
+					teemad.get(teemad.size() - 1).lisaKüsimus(k); //lisab uue küsimuse viimase teema juurde
 				}
 			}
 			return teemad;
@@ -62,13 +62,13 @@ public class Peaklass extends Application {
 
 	public static List<String> loeTulemused() throws IOException { // tagastab top 7 tulemust Stringina ja järjestatult
 		try (BufferedReader sisend = new BufferedReader(new InputStreamReader(new FileInputStream("edetabel.txt"), "UTF-8"))) {
-			
+
 			class Tulemus implements Comparable<Tulemus> { //eraldi klass et oleks lihtsam järjestada ja Stringiks teisendada
 				private double skoor;
 				private String nimi;
 				private String teema;
 				private String tulemus;
-				
+
 				public Tulemus(String rida) {
 					super();
 					String[] osad = rida.split(";");
@@ -78,7 +78,7 @@ public class Peaklass extends Application {
 					String[] tulemusOsad = osad[2].split("/");
 					this.skoor = Integer.parseInt(tulemusOsad[0]) / (double)Integer.parseInt(tulemusOsad[1]);
 				}
-				
+
 				@Override
 				public int compareTo(Tulemus teine) {
 					if (this.getSkoor() > teine.getSkoor())
@@ -87,27 +87,27 @@ public class Peaklass extends Application {
 						return -1;
 					return 0;
 				}
-				
+
 				public double getSkoor() {
 					return skoor;
 				}
-				
+
 				public String getTeema() {
 					return teema;
 				}
-				
+
 				public String getNimi() {
 					return nimi;
 				}
-				
+
 				public String getTulemus() {
 					return tulemus;
 				}
 			}
-			
-			String rida;
+
 			List<Tulemus> tulemused = new ArrayList<>();
-			sisend.readLine(); //esimene rida tühi
+			sisend.readLine(); //esimene rida on tühi
+			String rida;
 			while ((rida = sisend.readLine()) != null) {
 				Tulemus t = new Tulemus(rida);
 				tulemused.add(t);
@@ -147,11 +147,11 @@ public class Peaklass extends Application {
 
 		List<Button> nupud = new ArrayList<>();
 		List<Label> sildid = new ArrayList<>();
-		
+
 		//ERINEVAD VAATED
-		
+
 		//Peamenüü
-		
+
 		Label lPealkiri = new Label("Mälumäng");
 		Button bAlusta = new Button("Alusta");
 		Button bEdetabel = new Button("Edetabel");
@@ -167,7 +167,7 @@ public class Peaklass extends Application {
 		lPealkiri.setLayoutY(70);
 
 		//Teema valiku menüü
-		
+
 		Label lValiTeema = new Label("Vali teema");
 		HBox hTeemaNupud = new HBox();
 		List<Button> teemaNupud = new ArrayList<>();
@@ -187,7 +187,7 @@ public class Peaklass extends Application {
 		lValiTeema.setLayoutY(80);
 
 		//Küsimuse vaade
-		
+
 		Label lKüsimus = new Label();
 		Label lJärg = new Label();
 		Label lVastus = new Label();
@@ -211,7 +211,7 @@ public class Peaklass extends Application {
 		lVastus.setLayoutY(200);
 
 		//Tulemus
-		
+
 		Label lTulemus = new Label();
 		Label lSisesta = new Label("Sisesta oma nimi:");
 		TextField tNimi = new TextField();
@@ -230,7 +230,7 @@ public class Peaklass extends Application {
 		bSalvesta.setLayoutX(algLaius / 2 - 60);
 
 		//Edetabel
-		
+
 		Label lEdetabel = new Label("Top 7 tulemust");
 		Button bTagasi = new Button("Tagasi");
 		Group gEdetabel = new Group(lEdetabel, bTagasi);
@@ -251,45 +251,41 @@ public class Peaklass extends Application {
 		bTagasi.setFont(new Font(16));
 		bTagasi.setLayoutX(algLaius / 2 - 50);
 
-		
-		
-		
+
+		//---
+
 		juur.getChildren().addAll(gPeamenüü, gTeemaValik, gKüsimus, gTulemus, gEdetabel);
 
-		
+
 		for (Node n : juur.getChildren()) {
 			n.setVisible(false);
 		}
 		gPeamenüü.setVisible(true);
 
-		nupud.addAll(Arrays.asList(bAlusta, bEdetabel, bVälju, bTagasi, bValik1, bValik2, bValik3, bSalvesta));
+		nupud.addAll(Arrays.asList(bAlusta, bEdetabel, bVälju, bTagasi, bValik1, bValik2, bValik3, bSalvesta)); //ei sisalda bTagasi
 		for (Button nupp : nupud) {
-			if (nupp != bTagasi) {
-				nupp.setPrefWidth(120);
-				nupp.setPrefHeight(80);
-				nupp.setFont(new Font(16));
-				nupp.setWrapText(true);
-			}
+			nupp.setPrefWidth(120);
+			nupp.setPrefHeight(80);
+			nupp.setFont(new Font(16));
+			nupp.setWrapText(true);
 		}
 
-		sildid.addAll(Arrays.asList(lPealkiri, lValiTeema, lKüsimus, lJärg, lVastus, lTulemus, lSisesta, lEdetabel)); //ei sisalda edetabeli väärtuste silte
+		sildid.addAll(Arrays.asList(lPealkiri, lValiTeema, lKüsimus, lJärg, lVastus, lTulemus, lEdetabel)); //ei sisalda edetabeli väärtuste silte ja lSisesta
 		for (Label l : sildid) {
-			if (l != lSisesta) {
-				l.setPrefWidth(algLaius);
-				l.setAlignment(Pos.CENTER);
-				l.setTextAlignment(TextAlignment.CENTER);
-			}
+			l.setPrefWidth(algLaius);
+			l.setAlignment(Pos.CENTER);
+			l.setTextAlignment(TextAlignment.CENTER);
 		}
-		
+
 		//FUNKTSIONAALSUS
-		
+
 		peaLava.widthProperty().addListener(new ChangeListener<Number>() { //Graafilise liidese põhiosa püsib üleval keskel, kui akna suurust muudetakse
 			@Override
 			public void changed(ObservableValue<? extends Number> vaadeldav, Number vana, Number uus) {
-				juur.setLayoutX((uus.doubleValue() - algLaius) / 2 - 10);
+				juur.setLayoutX((uus.doubleValue() - algLaius) / 2 - 10); // -10 kuna peaLava laius ja juure laius natuke erinevad
 			}
 		});
-
+		
 		bAlusta.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent ae) {
@@ -297,7 +293,7 @@ public class Peaklass extends Application {
 				gTeemaValik.setVisible(true);
 			}
 		});
-		
+
 		bTagasi.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent ae) {
@@ -336,12 +332,11 @@ public class Peaklass extends Application {
 					}
 					gTeemaValik.setVisible(false);
 					gKüsimus.setVisible(true);
-					//Alusta mänguga
 					lVastus.setText("");
 					lJärg.setText("Küsimus " + "1/" + m.getKüsimusteArv());
 					lKüsimus.setText(m.getKüsimuseTekst());
-					String[] vastused = m.küsimuseVastused();
-					if (Math.random() < (1 / 3.0)) {
+					String[] vastused = m.getKüsimuseVastused();
+					if (Math.random() < (1 / 3.0)) { //erinevad variandid juhuslikus järjekorras
 						bValik1.setText(vastused[0]);
 						if (Math.random() < 0.5) {
 							bValik2.setText(vastused[1]);
@@ -395,7 +390,7 @@ public class Peaklass extends Application {
 					bValik2.setDisable(true);
 					bValik3.setDisable(true);
 					//Ootab ühe sekundi enne edasi liikumist
-					Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>() {
+					Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>() { //ootab 1 sekund, et saaks näha kas vastus õige
 						@Override
 						public void handle(ActionEvent ae) {
 							if (!viimane) {
@@ -403,8 +398,8 @@ public class Peaklass extends Application {
 								lVastus.setText("");
 								lJärg.setText("Küsimus " + m.getJärg() + "/" + m.getKüsimusteArv());
 								lKüsimus.setText(m.getKüsimuseTekst());
-								String[] vastused = m.küsimuseVastused();
-								if (Math.random() < (1 / 3.0)) {
+								String[] vastused = m.getKüsimuseVastused();
+								if (Math.random() < (1 / 3.0)) { //erinevad variandid juhuslikus järjekorras
 									bValik1.setText(vastused[0]);
 									if (Math.random() < 0.5) {
 										bValik2.setText(vastused[1]);
@@ -466,7 +461,7 @@ public class Peaklass extends Application {
 				gPeamenüü.setVisible(true);
 			}
 		});
-		
+
 		bVälju.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent ae) {

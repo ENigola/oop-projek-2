@@ -26,7 +26,7 @@ public class Mälumäng {
 		return praegune.getKüsimus();
 	}
 	
-	public String[] küsimuseVastused() {
+	public String[] getKüsimuseVastused() {
 		return praegune.getVastused();
 	}
 	
