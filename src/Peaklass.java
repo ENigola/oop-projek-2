@@ -34,7 +34,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Peaklass extends Application {
-	Mälumäng m;
+	static Mälumäng m;
 
 	public static List<Teema> loeKüsimused(String failinimi) throws IOException {
 		try (BufferedReader sisend = new BufferedReader(new InputStreamReader(new FileInputStream(failinimi), "UTF-8"))) {
